@@ -99,3 +99,24 @@ for(let i=0; i < posts.length; i++){
 
 document.getElementById('container').innerHTML = items;
 
+addLikes();
+function addLikes() {
+    const likeBtn = document.getElementsByClassName("like-button");
+    for (let i = 0; i < likeBtn.length; i++) {
+        likeBtn[i].addEventListener("click", function () {
+            const likeCounter = document.getElementById(`like-counter-${i + 1}`);
+            let likeInt = parseInt(likeCounter.innerHTML);
+            if (!(this.classList.contains("like-button--liked"))) {
+                this.classList.add("like-button--liked");
+                likeInt += 1;
+            } else {
+                this.classList.remove("like-button--liked");
+                likeInt -= 1;
+            }
+            likeCounter.innerHTML = likeInt;
+        });
+    }
+}
+
+
+    
